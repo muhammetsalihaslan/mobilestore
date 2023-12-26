@@ -1,7 +1,9 @@
 import React from 'react';
 import {
+  Dimensions,
   FlatList,
   SafeAreaView,
+  ScrollView,
   StyleSheet,
   TextInput,
   View,
@@ -11,16 +13,18 @@ import ItemCard from './components/ItemCard/ItemCard';
 
 function App() {
   const renderGoods = ({item}) => <ItemCard goods={item} />;
+  const keyCall = item => item.id.toString();
   return (
     <SafeAreaView style={styles.container}>
       <TextInput placeholder="Search..." style={styles.search_container} />
-      <View style={styles.flat_container}>
+      <ScrollView style={styles.flat_container}>
         <FlatList
           data={item_data}
           renderItem={renderGoods}
           style={styles.flat_list}
+          keyExtractor={keyCall}
         />
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -30,7 +34,6 @@ const styles = StyleSheet.create({
     padding: 6,
     backgroundColor: 'white',
     color: 'black',
-    flex: 1,
   },
   search_container: {
     height: 50,
@@ -39,18 +42,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#ECEFF1',
     fontSize: 15,
     fontWeight: 'bold',
-    flex: 1,
   },
   flat_container: {
-    flex: 12,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    marginTop: 10,
+    marginHorizontal: 20,
   },
-  flat_list: {
-    width: '50%',
-    gap: 10,
-  },
+
+  flat_list: {},
 });
 
 export default App;

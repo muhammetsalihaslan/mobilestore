@@ -5,11 +5,17 @@ import {Image, SafeAreaView, Text, View} from 'react-native';
 const ItemCard = ({goods}) => {
   return (
     <SafeAreaView style={styles.container}>
-      <Image source={{uri: goods.imgURL}} />
-      <View>
-        <Text>{goods.title}</Text>
-        <Text>{goods.price}</Text>
-        <Text>{!goods.inStock ? 'Stokta Yok' : ''}</Text>
+      <View style={styles.body}>
+        <View style={styles.img_tag}>
+          <Image source={{uri: goods.imgURL}} style={styles.image} />
+        </View>
+        <View style={styles.second_container}>
+          <Text style={styles.title}>{goods.title}</Text>
+          <Text>{goods.price}</Text>
+          <Text style={styles.instock}>
+            {!goods.inStock ? 'Stokta Yok' : ''}
+          </Text>
+        </View>
       </View>
     </SafeAreaView>
   );
