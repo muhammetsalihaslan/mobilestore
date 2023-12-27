@@ -1,9 +1,7 @@
 import React from 'react';
 import {
-  Dimensions,
   FlatList,
   SafeAreaView,
-  ScrollView,
   StyleSheet,
   TextInput,
   View,
@@ -17,14 +15,15 @@ function App() {
   return (
     <SafeAreaView style={styles.container}>
       <TextInput placeholder="Search..." style={styles.search_container} />
-      <ScrollView style={styles.flat_container}>
+      <View style={styles.flat_container}>
         <FlatList
           data={item_data}
           renderItem={renderGoods}
           style={styles.flat_list}
           keyExtractor={keyCall}
+          numColumns={2}
         />
-      </ScrollView>
+      </View>
     </SafeAreaView>
   );
 }
@@ -34,6 +33,7 @@ const styles = StyleSheet.create({
     padding: 6,
     backgroundColor: 'white',
     color: 'black',
+    flex: 1,
   },
   search_container: {
     height: 50,
@@ -43,9 +43,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
   },
-  flat_container: {
-    marginHorizontal: 20,
-  },
+  flat_container: {},
 
   flat_list: {},
 });
